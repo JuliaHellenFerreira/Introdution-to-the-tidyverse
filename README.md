@@ -1,6 +1,6 @@
 # Introdução ao Tidyverse
 
-## Capítulo 1º
+## Capítulo 1º - Dplyr
 
 Vamos aprender filter(), pipe (%>%), arrange(), mutate()
 
@@ -30,6 +30,24 @@ gapminder %>%
   
   arrange(desc(gdpPercap))
   
-- Agora que já sabemos usar o filter() e arrange (), vamos aprender a usar o mutate(). Vale lembrar que o mutate adiciona uma nova variável:
+- Agora que já sabemos usar o filter() e arrange (), vamos aprender a usar o mutate(). Vale lembrar que o mutate adiciona uma nova variável ou modifica uma já existente:
 
+gapminder %>%
+
+  mutate(lifeExp = 12 * lifeExp)
+
+- Vamos criar uma variável usando mutate:
+
+gapminder %>% 
+
+  mutate(lifeExpMonths = 12 * lifeExp)
  
+- Agora, para fazer uma combinação de filter, mutate and arrange:
+
+gapminder %>%
+
+  filter( year == 2007 ) %>%
+  
+  mutate( lifeExpMonths = 12 * lifeExp ) %>%
+  
+  arrange(desc(lifeExpMonths)) %>%
